@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Form() {
 
     const [response, setResponse] = useState<string | null>(null);
-    const [prompt, setPrompt] = useState<string>("Simply respond with the text: 'Please enter a prompt!'");
+    const [prompt, setPrompt] = useState<string>("Simply respond with 'Please enter a prompt.'");
     const [model, setModel] = useState<string>("gpt");
     const [version, setVerison] = useState<string>("gpt-3.5-turbo");
 
@@ -41,12 +41,12 @@ export default function Form() {
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="prompt">Prompt:</label>
-                <input
-                    type="text"
+                <textarea 
                     id="prompt"
-                    value={prompt}
+                    placeholder="Please enter a prompt"
                     onChange={(e) => setPrompt(e.target.value)}
-                />
+                    cols={30} rows={10}
+                ></textarea>
             </div>
             <div>
                 <label htmlFor="model">Model:</label>
