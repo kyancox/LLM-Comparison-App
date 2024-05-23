@@ -1,9 +1,14 @@
+import ReactMarkdown from 'react-markdown';
 
-export default function ModelResponse() {
+interface ModelResponseProps {
+    response: string
+}
+
+export default function ModelResponse({response}: ModelResponseProps) {
 
     return (
         <div>
-            <h1>response</h1>
+            {response && <div><ReactMarkdown>{response}</ReactMarkdown></div>}
         </div>
     );
 }

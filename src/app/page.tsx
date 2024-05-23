@@ -1,41 +1,70 @@
-// Uses server by default 
-"use client"
+// Uses server by default
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 import PromptInput from "@/components/PromptInput";
 import Model from "@/components/Model";
 import ModelResponse from "@/components/ModelResponse";
 
-
 export default function Home() {
+  const [prompt, setPrompt] = useState("");
+  const [button, setButton] = useState(false);
 
-  // need prompt outside of component because it needs to be used in the form
-  // solution: prompt is used in a single function 
+  const [responses, setResponses] = useState({ gpt: false, gemini: false, claude: false })
 
-  const [prompt, setPrompt] = useState('');
+  useEffect(() => {
+    if (responses.gpt && responses.gemini && responses.claude) setButton(false);
+  }, [responses])
 
-  const handleSubmit = (prompt: string) => { 
-    // sends prompt to different API forms. 
-  };
-
+  const handleResponse = (model: string) => {
+    setResponses(prev => ({ ...prev, [model]: true }))
+  }
 
   return (
     <>
+      <PromptInput setPrompt={setPrompt}>
+        <button
+          id="generateButton"
+          className={`m-2 px-4 py-2 rounded ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
+          type="button"
+          onClick={() => setButton(true)}
+          disabled={button}
+        >
+          {button ? "Generating..." : "Generate Response"}
+        </button>
+      </PromptInput>
 
-      <PromptInput prompt={prompt} setPrompt={setPrompt} handleSubmit={handleSubmit}></PromptInput>
-
-      <br />
-
-      <Model modelName="ChatGPT (OpenAI)" endpoint="gpt" modelLink="https://openai.com/chatgpt/" />
-      <Model modelName="Gemini (Google)" endpoint="gemini" modelLink="https://www.anthropic.com/claude" />
-      <Model modelName="Claude (Anthropic)" endpoint="claude" modelLink="https://deepmind.google/technologies/gemini/" />
-
-
-
-
-
-
+      <div className="mt-10 flex justify-evenly items-start ">
+        <Model
+          modelName="ChatGPT (OpenAI)"
+          endpoint="gpt"
+          modelLink="https://openai.com/chatgpt/"
+          prompt={prompt}
+          button={button}
+          setButton={setButton}
+          onResponse={() => handleResponse('gpt')}
+        />
+        <Model
+          modelName="Gemini (Google)"
+          endpoint="gemini"
+          modelLink="https://deepmind.google/technologies/gemini/"
+          prompt={prompt}
+          button={button}
+          setButton={setButton}
+          onResponse={() => handleResponse('gemini')}
+        />
+        <Model
+          modelName="Claude (Anthropic)"
+          endpoint="claude"
+          modelLink="https://www.anthropic.com/claude"
+          prompt={prompt}
+          button={button}
+          setButton={setButton}
+          onResponse={() => handleResponse('claude')}
+        />
+      </div>
     </>
   );
 }
