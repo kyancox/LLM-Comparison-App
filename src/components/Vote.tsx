@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import ModelLabel from './ModelLabel';
+import Thanks from './Thanks';
 
 interface VoteProps {
     prompt: string
@@ -12,6 +13,7 @@ export default function Vote({ prompt, button }: VoteProps) {
     const [isChecked, setIsChecked] = useState(false);
     const [selection, setSelection] = useState('');
     const [voteButton, setVoteButton] = useState(false)
+    const [thanks, showThanks] = useState(false)
 
     const generateCategory = async () => {
         console.log(`prompt: ${prompt}`)
@@ -105,6 +107,7 @@ export default function Vote({ prompt, button }: VoteProps) {
                         {voteButton ? 'Vote Submitted!' : 'Submit Vote'}
                     </button>
                 </div>
+                {voteButton && <Thanks/>}
         </>
     );
 }

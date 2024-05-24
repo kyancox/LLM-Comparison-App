@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const votes = await collection.find({}).toArray();
         res.status(200).json({ votes });
     } else if (req.method === 'GET') {
-        const votes = await collection.find({}).toArray();
+        const votes = await collection.find({}, { projection: { _id: 0 } }).toArray();
         res.status(200).json({ votes });
     } else {
         res.status(405).json({ message: 'Method Not Allowed' })
