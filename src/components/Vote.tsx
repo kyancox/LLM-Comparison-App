@@ -71,34 +71,40 @@ export default function Vote({ prompt, button }: VoteProps) {
 
     return (
         <>
-            <div className='mt-8 flex flex-col items-center space-y-4'>
-                <p>Which response did you like best?</p>
-                <div className='flex flex-row space-x-10 justify-center items-end'>
-                    {
-                        Object.entries(models).map(([endpoint, model]) => (
-                            <ModelLabel key={endpoint} endpoint={endpoint} model={model} selection={selection} setSelection={setSelection} />
-                        ))
-                    }
+                <div className='mt-8 flex flex-col items-center space-y-4'>
+                    <p className="text-gray-900 font-medium text-xl">Which response did you like best?</p>
+                    <div className='flex flex-row space-x-10 justify-center items-end'>
+                        {
+                            Object.entries(models).map(([endpoint, model]) => (
+                                <ModelLabel key={endpoint} endpoint={endpoint} model={model} selection={selection} setSelection={setSelection} />
+                            ))
+                        }
+                    </div>
+                    <div className="flex flex-col items-center space-y-2">
+                        <label className="flex items-center space-x-2">
+                            <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={() => setIsChecked(!isChecked)}
+                                className="form-checkbox h-5 w-5 text-blue-600"
+                            />
+                            <span className="text-gray-800 font-medium text-lg">Include Prompt Category in Vote</span>
+                        </label>
+                        <div className="text-blue-600">
+                            <span className="font-semibold">Category:</span> {category}
+                        </div>
+                    </div>
                 </div>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => setIsChecked(!isChecked)}
-                    />
-                    Include prompt category in vote: {category}
-                </label>
-            </div>
-            <div className='flex justify-center'>
-                <button
-                    className={`m-2 px-4 py-2 rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
-                    type="button"
-                    onClick={submitVote}
-                    disabled={button}
-                >
-                    {voteButton ? 'Vote Submitted!' : 'Submit Vote'}
-                </button>
-            </div>
+                <div className='flex justify-center'>
+                    <button
+                        className={`m-2 px-4 py-2 rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
+                        type="button"
+                        onClick={submitVote}
+                        disabled={voteButton || button}
+                    >
+                        {voteButton ? 'Vote Submitted!' : 'Submit Vote'}
+                    </button>
+                </div>
         </>
     );
 }
