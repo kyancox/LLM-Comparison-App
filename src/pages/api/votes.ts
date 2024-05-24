@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const votes = await collection.find({}).toArray();
         res.status(200).json({ votes });
     } else if (req.method === 'GET') {
-        const { categories } = req.body;
+        const { categories } = req.query;
 
         if (categories) {
             // Query to return only documents with category field

@@ -35,8 +35,15 @@ export default function PieChart() {
             const result = await response.json();
             const data: VoteData[] = result.votes;
 
+            const modelNames: { [key: string]: string } = {
+                'gpt': 'ChatGPT (OpenAI)',
+                'gemini': 'Gemini (Google)',
+                'claude': 'Claude (Anthropic)',
+            }
+
+
             const voteData = {
-                labels: data.map(item => item.model),
+                labels: data.map(item => modelNames[item.model]),
                 datasets: [
                     {
                         label: 'Votes',
