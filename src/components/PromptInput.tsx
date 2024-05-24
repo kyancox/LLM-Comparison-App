@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 interface PromptProps {
     setPrompt: React.Dispatch<React.SetStateAction<string>>;
     children: React.ReactNode
+    setButton: (value: boolean) => void
 }
 
 export default function PromptInput({ setPrompt, children }: PromptProps) {

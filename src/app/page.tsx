@@ -7,15 +7,22 @@ import { useState, useEffect } from "react";
 import PromptInput from "@/components/PromptInput";
 import Model from "@/components/Model";
 import ModelResponse from "@/components/ModelResponse";
+import Vote from "@/components/Vote";
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [button, setButton] = useState(false);
+  const [vote, showVote] = useState(false);
 
   const [responses, setResponses] = useState({ gpt: false, gemini: false, claude: false })
 
+  
+
   useEffect(() => {
-    if (responses.gpt && responses.gemini && responses.claude) setButton(false);
+    if (responses.gpt && responses.gemini && responses.claude) {
+      setButton(false)
+      showVote(true)
+    };
   }, [responses])
 
   const handleResponse = (model: string) => {
@@ -24,10 +31,10 @@ export default function Home() {
 
   return (
     <>
-      <PromptInput setPrompt={setPrompt}>
+      <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
-          className={`m-2 px-4 py-2 rounded ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
+          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
           type="button"
           onClick={() => setButton(true)}
           disabled={button}
@@ -65,6 +72,9 @@ export default function Home() {
           onResponse={() => handleResponse('claude')}
         />
       </div>
+
+
+      {vote && <Vote prompt={prompt} button={button} />}
     </>
   );
 }
