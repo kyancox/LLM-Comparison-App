@@ -69,7 +69,7 @@ export default function PieChart() {
     }, []);
 
     return (
-        <div className='w-1/4 h-1/4 mx-auto'>
+        <div className='w-1/4 h-1/4 mx-auto mb-4'>
             <Pie data={chartData} />
         </div>
     );
