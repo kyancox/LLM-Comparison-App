@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import { getModuleBuildInfo } from 'next/dist/build/webpack/loaders/get-module-build-info';
 
 // Register the required components
 Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
@@ -41,29 +42,33 @@ export default function BarChart() {
             const categories = Array.from(new Set(data.map(item => item.category)));
             const models = Array.from(new Set(data.map(item => item.model)));
 
-            const modelNames: { [key: string]: string } = {
-                'gpt': 'ChatGPT (OpenAI)',
-                'gemini': 'Gemini (Google)',
-                'claude': 'Claude (Anthropic)',
+            const modelData: { [key: string]: { name: string, backgroundColor: string, borderColor: string } } = {
+                'gpt': {
+                    'name': 'ChatGPT (OpenAI)',
+                    'backgroundColor': 'rgba(255, 99, 132, 0.2)',
+                    'borderColor': 'rgba(255, 99, 132, 1)'
+                },
+                'gemini': {
+                    'name': 'Gemini (Google)',
+                    'backgroundColor': 'rgba(54, 162, 235, 0.2)',
+                    'borderColor': 'rgba(54, 162, 235, 1)',
+                },
+                'claude': {
+                    'name': 'Claude (Anthropic)',
+                    'backgroundColor': 'rgba(255, 206, 86, 0.2)',
+                    'borderColor': 'rgba(255, 206, 86, 1)'
+                }
             }
 
             const datasets = models.map(model => {
                 return {
-                    label: modelNames[model],
+                    label: modelData[model].name,
                     data: categories.map(category => {
                         const vote = data.find(item => item.category === category && item.model === model);
                         return vote ? vote.votes : 0;
                     }),
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                    ],
+                    backgroundColor: [modelData[model].backgroundColor],
+                    borderColor: [modelData[model].borderColor],
                     borderWidth: 1,
                 };
             });

@@ -7,16 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const collection = db.collection('votes');
 
     // Check if collection is empty and insert initial data if needed
-    const initialData = [
-        { model: 'gpt', votes: 0 },
-        { model: 'gemini', votes: 0 },
-        { model: 'claude', votes: 0 }
-    ];
+    // const initialData = [
+    //     { model: 'gpt', votes: 0 },
+    //     { model: 'gemini', votes: 0 },
+    //     { model: 'claude', votes: 0 }
+    // ];
 
-    const existingVotes = await collection.find({}).toArray();
-    if (existingVotes.length === 0) {
-        await collection.insertMany(initialData);
-    }
+    // const existingVotes = await collection.find({}).toArray();
+    // if (existingVotes.length === 0) {
+    //     await collection.insertMany(initialData);
+    // }
 
     if (req.method === 'POST') {
         const { model, category } = req.body;

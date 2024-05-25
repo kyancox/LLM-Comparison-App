@@ -16,8 +16,6 @@ export default function Home() {
 
   const [responses, setResponses] = useState({ gpt: false, gemini: false, claude: false })
 
-  
-
   useEffect(() => {
     if (responses.gpt && responses.gemini && responses.claude) {
       setButton(false)

@@ -13,7 +13,6 @@ export default function Vote({ prompt, button }: VoteProps) {
     const [isChecked, setIsChecked] = useState(false);
     const [selection, setSelection] = useState('');
     const [voteButton, setVoteButton] = useState(false)
-    const [thanks, showThanks] = useState(false)
 
     const generateCategory = async () => {
         console.log(`prompt: ${prompt}`)
@@ -50,7 +49,6 @@ export default function Vote({ prompt, button }: VoteProps) {
         });
 
         setVoteButton(true)
-        // TODO: finish
     };
 
     useEffect(() => {
@@ -59,6 +57,9 @@ export default function Vote({ prompt, button }: VoteProps) {
     }, []); // Empty dependency array ensures this runs only on initial render
 
     useEffect(() => {
+        if (voteButton) {
+            setVoteButton(false)
+        }
         if (button) {
             generateCategory();
         }
