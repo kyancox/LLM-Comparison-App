@@ -38,7 +38,7 @@ export default function PromptInput({ setPrompt, children }: PromptProps) {
                 <h1 className='mb-4 font-bold text-2xl text-gray-800'>Enter your prompt below:</h1>
                 <textarea
                     ref={textareaRef}
-                    className='border rounded shadow p-3 w-full max-w-lg'
+                    className='border rounded shadow p-3 container w-full max-w-lg'
                     placeholder="Please enter a prompt."
                     onKeyDown={handleKeyDown}
                     onChange={handleInput}
