@@ -32,7 +32,7 @@ export default function Home() {
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
-          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
+          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-900 text-white"}`}
           type="button"
           onClick={() => setButton(true)}
           disabled={button}

@@ -100,7 +100,7 @@ export default function Vote({ prompt, button }: VoteProps) {
                 </div>
                 <div className='flex justify-center'>
                     <button
-                        className={`m-2 px-4 py-2 rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-900 text-white"}`}
+                        className={`m-2 px-4 py-2 rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-900 text-white"}`}
                         type="button"
                         onClick={submitVote}
                         disabled={voteButton || button}
