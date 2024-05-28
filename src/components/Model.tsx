@@ -54,27 +54,29 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
 
     return (
         <div className="max-w-md mx-auto p-5 border rounded shadow min-w-[317px] min-h-[153px]">
-            <div className="text-center mb-1">
+            <div className="text-center mb-1 text-white rounded"  style={{ backgroundColor: '#96d3fe' }}>
                 <a href={modelLink} className="inline-flex items-center space-x-2 hover:underline hover:text-blue-500">
-                    <Image src={`/${endpoint}.ico`} width={25} height={25} alt={`${endpoint} logo`}  />
+                    <Image src={`/${endpoint}-trans.png`} width={25} height={25} alt={`${endpoint} logo`} />
                     <span className="text-xl font-semibold">{modelName}</span>
                 </a>
                 <br />
             </div>
 
-            <label htmlFor="version" className=" text-lg">Version: </label>
-            <select
-                id="version"
-                value={selectedVersion}
-                onChange={(e) => setVerison(e.target.value)}
-                className="mt-2 mb-4 p-2 border rounded font-medium"
-            >
-                {validVersions[endpoint].map((version) => (
-                    <option key={version} value={version}>
-                        {version}
-                    </option>
-                ))}
-            </select>
+            <div className="flex flex-row items-center">
+                <label htmlFor="version" className=" text-lg ">Version: </label>
+                <select
+                    id="version"
+                    value={selectedVersion}
+                    onChange={(e) => setVerison(e.target.value)}
+                    className="mt-2 w-full mb-4 p-2 border rounded font-medium"
+                >
+                    {validVersions[endpoint].map((version) => (
+                        <option key={version} value={version}>
+                            {version}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
             <ModelResponse response={response} />
         </div>

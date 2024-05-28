@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Navbar() {
     return (
         <nav className="p-2 mb-2 text-white text-lg font-semibold" style={{ backgroundColor: '#96d3fe' }}>
-            <div className="container mx-auto flex justify-between items-center">
+            <div className=" mx-auto flex justify-between items-center font">
                 <div className="">
                     <Link href="/" className='flex flex-row'>
                         <Image src='/logo.png' alt='logo' height={50} width={50}/>

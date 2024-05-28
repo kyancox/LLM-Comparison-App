@@ -41,7 +41,7 @@ export default function Home() {
         </button>
       </PromptInput>
 
-      <div className="mt-10 flex justify-evenly items-start ">
+      <div className="mt-10 flex flex-col lg:flex-row justify-evenly items-start ">
         <Model
           modelName="ChatGPT (OpenAI)"
           endpoint="gpt"
