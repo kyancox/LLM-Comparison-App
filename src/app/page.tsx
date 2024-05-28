@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 
 import PromptInput from "@/components/PromptInput";
 import Model from "@/components/Model";
-import ModelResponse from "@/components/ModelResponse";
 import Vote from "@/components/Vote";
+import About from "@/components/About"
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
@@ -29,10 +29,11 @@ export default function Home() {
 
   return (
     <>
+    <About />
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
-          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-900 text-white"}`}
+          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-logoBlue hover:bg-blue-900 text-white"}`}
           type="button"
           onClick={() => setButton(true)}
           disabled={button}

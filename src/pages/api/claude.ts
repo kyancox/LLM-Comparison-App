@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Anthropic from '@anthropic-ai/sdk';
 import dotenv from 'dotenv';
+import checkQueryLimit from '@/middleware/checkQueryLimit';
 
 dotenv.config();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         res.status(405).json({ message: 'Method Not Allowed' });
         return;
@@ -40,8 +41,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json({ response: text });
     } catch (error) {
         console.error('Error fetching data from Anthropic:', error);
-        res.status(500).json({ error: 'Failed to fetch data from Anthropic' });
+        res.status(500).json({ error: 'Failed to fetch data from Anthropic.' });
     }
 }
 
 
+export default checkQueryLimit(handler)

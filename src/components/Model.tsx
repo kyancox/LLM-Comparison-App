@@ -19,6 +19,7 @@ interface ModelProps {
 export default function Model({ modelName, modelLink, endpoint, prompt, button, setButton, onResponse }: ModelProps) {
 
     const [response, setResponse] = useState('');
+    const [error, setError] = useState('')
 
     const validVersions: { [key: string]: string[] } = {
         'gpt': ['gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo', 'gpt-4o'],
@@ -39,7 +40,13 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
                 body: JSON.stringify({ prompt, model: selectedVersion })
             });
             const result = await response.json();
-            setResponse(result.response)
+            if (!response.ok) {
+                setError(result.message || result.error || 'An error occured')
+                setResponse('')
+            } else {
+                setResponse(result.response)
+                setError('')
+            }
         } catch (error) {
             console.error(`Error fetching data from ${modelName}:`, error);
         }
@@ -54,7 +61,7 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
 
     return (
         <div className="max-w-md mx-auto p-5 border rounded shadow min-w-[317px] min-h-[153px]">
-            <div className="text-center mb-1 text-white rounded"  style={{ backgroundColor: '#96d3fe' }}>
+            <div className="text-center mb-1 text-white rounded" style={{ backgroundColor: '#96d3fe' }}>
                 <a href={modelLink} className="inline-flex items-center space-x-2 hover:underline hover:text-blue-500">
                     <Image src={`/${endpoint}-trans.png`} width={25} height={25} alt={`${endpoint} logo`} />
                     <span className="text-xl font-semibold">{modelName}</span>
@@ -78,6 +85,7 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
                 </select>
             </div>
 
+            {error && <div className="text-red-500 font-bold text-xl text-center">{error}</div>}
             <ModelResponse response={response} />
         </div>
     );

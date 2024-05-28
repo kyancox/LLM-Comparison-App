@@ -34,6 +34,12 @@ if (process.env.NODE_ENV === "development") {
   clientPromise = client.connect();
 }
 
+clientPromise.then(async (client) => {
+  const db = client.db('llm-comparison');
+  const collection = db.collection('queries');
+  await collection.createIndex({ "timestamp": 1 }, { expireAfterSeconds: 60 * 60 * 24 }); // 1 day
+});
+
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
 export default clientPromise;
