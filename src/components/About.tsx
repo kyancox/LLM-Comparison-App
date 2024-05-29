@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import Link from 'next/link';
+
 export default function About() {
     const [queryCount, setQueryCount] = useState(0);
 
@@ -18,38 +20,20 @@ export default function About() {
 
 
     return (
-        <div className='text-center p-5 flex flex-col items-center '>
+        <div className='text-center p-4 flex flex-col items-center  '>
             <p className="text-xl ">
-                LLM Comparison is a web app that allows you to compare responses from leading Large Language Models (LLMs) like ChatGPT, Gemini, and Claude. Input a prompt, generate responses, and vote for your favorite to see how each model performs.
+                LLM Comparison is a web app that allows you to compare responses from leading Large Language Models (LLMs) like <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Claude</Link>. Input a prompt, generate responses, and vote for your favorite to see how each model performs.
             </p>
-            <p>Note: Users can only query premium models up to 3 times a day. Premium models include:</p>
 
-            <div>
-                <h3 className="text-md font-semibold mt-4">ChatGPT (OpenAI)</h3>
+            <p className='mt-4'>
+                Note: Users can only query premium models up to 3 times a day. You can learn more about premium models on the <Link href="/about" className='text-blue-900 hover:underline'>about</Link> page.
+            </p>
 
-                    <ul className="text-sm text-left list-disc list-inside ml-4">
-
-                        <li>gpt-4</li>
-                        <li>gpt-4-turbo</li>
-                        <li>gpt-4o</li>
+            <p className="mt-1">
+                You have made <span className='font-bold'>{queryCount}/3 premium queries</span> today.
+            </p>
 
 
-                    </ul>
-
-            </div>
-
-            <h3 className="text-md font-semibold mt-4">Gemini (Google)</h3>
-            <ul className="text-sm text-left list-disc list-inside ml-4">
-                <li>gemini-1.5-flash</li>
-                <li>gemini-1.5-pro-latest</li>
-            </ul>
-
-            <h3 className="text-md font-semibold mt-4">Claude (Anthropic)</h3>
-            <ul className="text-sm list-disc list-inside ml-4">
-                <li>opus</li>
-            </ul>
-
-            <p className="text-center mt-4">You have made {queryCount} premium queries today.</p>
         </div>
 
 

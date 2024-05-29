@@ -4,7 +4,7 @@ import "./globals.css";
 
 import Navbar from '@/components/Navbar'
 
-const nunito_sans = Nunito_Sans({ subsets: ["latin"] });
+const nunito_sans = Nunito_Sans({ subsets: ["latin"], display: 'swap', adjustFontFallback: false });
 
 export const metadata: Metadata = {
   title: "LLM Comparison",
