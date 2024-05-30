@@ -24,6 +24,7 @@
     "react-markdown": "^9.0.1",
     "react-spinners": "^0.13.8",
     "react-syntax-highlighter": "^15.5.0",
+    "sharp": "^0.33.4",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
