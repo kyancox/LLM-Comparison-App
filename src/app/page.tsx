@@ -20,6 +20,7 @@ export default function Home() {
   useEffect(() => {
     if (responses.gpt && responses.gemini && responses.claude) {
       setButton(false)
+      if (!prompt) return
       showVote(true)
     };
   }, [responses])
@@ -37,7 +38,7 @@ export default function Home() {
 
   return (
     <div className="lg:mb-7 mb-6">
-      <About button={button}/>
+      <About button={button} />
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
