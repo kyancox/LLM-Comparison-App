@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
-export default function About() {
+interface AboutProps {
+    button: boolean
+}
+
+export default function About({button}: AboutProps) {
     const [queryCount, setQueryCount] = useState(0);
 
     useEffect(() => {
@@ -13,9 +17,10 @@ export default function About() {
             })
             const data = await response.json()
             setQueryCount(data.count)
+            console.log(queryCount)
         };
         fetchQueries();
-    }, [])
+    }, [button])
 
 
 

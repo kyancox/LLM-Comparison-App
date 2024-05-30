@@ -15,6 +15,7 @@ export default function Home() {
   const [vote, showVote] = useState(false);
 
   const [responses, setResponses] = useState({ gpt: false, gemini: false, claude: false })
+  const [loading, setLoading] = useState({ gpt: false, gemini: false, claude: false })
 
   useEffect(() => {
     if (responses.gpt && responses.gemini && responses.claude) {
@@ -24,18 +25,25 @@ export default function Home() {
   }, [responses])
 
   const handleResponse = (model: string) => {
+    setLoading(prev => ({ ...prev, [model]: false }))
     setResponses(prev => ({ ...prev, [model]: true }))
+  }
+
+  const handleGenerateClick = () => {
+    setButton(true)
+    setLoading({ gpt: true, gemini: true, claude: true })
+    setResponses({ gpt: false, gemini: false, claude: false })
   }
 
   return (
     <>
-    <About />
+      <About button={button}/>
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
           className={`m-1 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 hover:bg-logoBlue text-white"}`}
           type="button"
-          onClick={() => setButton(true)}
+          onClick={handleGenerateClick}
           disabled={button}
         >
           {button ? "Generating..." : "Generate Response"}
@@ -49,7 +57,8 @@ export default function Home() {
           modelLink="https://openai.com/chatgpt/"
           prompt={prompt}
           button={button}
-          setButton={setButton}
+          loading={loading.gpt}
+          responseState={responses.gpt}
           onResponse={() => handleResponse('gpt')}
         />
         <Model
@@ -58,7 +67,8 @@ export default function Home() {
           modelLink="https://deepmind.google/technologies/gemini/"
           prompt={prompt}
           button={button}
-          setButton={setButton}
+          loading={loading.gemini}
+          responseState={responses.gemini}
           onResponse={() => handleResponse('gemini')}
         />
         <Model
@@ -67,7 +77,8 @@ export default function Home() {
           modelLink="https://www.anthropic.com/claude"
           prompt={prompt}
           button={button}
-          setButton={setButton}
+          loading={loading.claude}
+          responseState={responses.claude}
           onResponse={() => handleResponse('claude')}
         />
       </div>

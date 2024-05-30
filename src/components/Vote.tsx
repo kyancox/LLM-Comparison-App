@@ -74,16 +74,16 @@ export default function Vote({ prompt, button }: VoteProps) {
 
     return (
         <>
-                <div className='mt-8 flex flex-col items-center space-y-4'>
+                <div className='mt-3 flex flex-col items-center space-y-4'>
                     <p className="text-gray-900 font-medium text-xl">Which response did you like best?</p>
-                    <div className='flex flex-row space-x-10 justify-center items-end'>
+                    <div className='flex flex-row space-x-8 mx-2 justify-center items-end'>
                         {
                             Object.entries(models).map(([endpoint, model]) => (
                                 <ModelLabel key={endpoint} endpoint={endpoint} model={model} selection={selection} setSelection={setSelection} />
                             ))
                         }
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-1">
                         <label className="flex items-center space-x-2">
                             <input
                                 type="checkbox"
@@ -98,9 +98,9 @@ export default function Vote({ prompt, button }: VoteProps) {
                         </div>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                <div className='flex justify-center mt-1'>
                     <button
-                        className={`m-2 px-4 py-2 rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-900 text-white"}`}
+                        className={`m-2 px-4 py-2 text-xl rounded transition ${voteButton || !selection ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 hover:bg-logoBlue text-white"}`}
                         type="button"
                         onClick={submitVote}
                         disabled={voteButton || button}
