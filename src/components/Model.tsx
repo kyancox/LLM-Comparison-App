@@ -7,7 +7,7 @@ import ModelResponse from "./ModelResponse";
 
 interface ModelProps {
     modelName: string
-    modelLink: string // for modelLink, link to chatbot or link to info??
+    modelLink: string 
     endpoint: string
     button: boolean
     prompt: string

@@ -32,25 +32,25 @@ export const useTypewriter = (text: string, speed: number) => {
 };
 
 export default function ModelResponse({ response }: ModelResponseProps) {
-    const displayText = useTypewriter(response, 5); 
+    const displayText = useTypewriter(response, 2); 
 
     return (
         <>
             {displayText &&
                 <div className='bg-logoGrey text-logoSlate rounded p-3'>
                     <ReactMarkdown
-                        children={displayText}
                         components={{
                             code({ node, inline, className, children, ...props }: any) {
                                 const match = /language-(\w+)/.exec(className || '');
                                 return !inline && match ? (
                                     <SyntaxHighlighter
-                                        children={String(children).replace(/\n$/, '')}
                                         style={oneDark}
                                         language={match[1]}
                                         PreTag="div"
                                         {...props}
-                                    />
+                                    >
+                                        {String(children).replace(/\n$/, '')}
+                                    </SyntaxHighlighter>
                                 ) : (
                                     <code className={className} {...props}>
                                         {children}
@@ -58,7 +58,9 @@ export default function ModelResponse({ response }: ModelResponseProps) {
                                 );
                             }
                         }}
-                    />
+                    >
+                        {displayText}
+                    </ReactMarkdown>
                 </div>
             }
         </>
