@@ -2,17 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-import { getModuleBuildInfo } from 'next/dist/build/webpack/loaders/get-module-build-info';
+import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title } from 'chart.js';
 
 // Register the required components
-Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, Title);
 
 interface VoteData {
-    model: string
-    category: string
-    votes: number
+    model: string;
+    category: string;
+    votes: number;
 }
 
 interface ChartData {
@@ -84,9 +82,52 @@ export default function BarChart() {
         fetchData();
     }, []);
 
+    const options = {
+        indexAxis: 'y' as const, // Switch the axes
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Vote Distribution by Category and Model',
+                font: {
+                    size: 20, 
+                },
+                color: 'black',
+            },
+            legend: {
+                position: 'top' as const, // Ensure the position is one of the allowed values
+                labels: {
+                    font: {
+                        size: 16, 
+                    },
+                },
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 12,
+                    },
+                },
+            },
+            y: {
+                ticks: {
+                    font: {
+                        size: 14,
+                    },
+                },
+            },
+        },
+    };
+
+    // Calculate the height based on the number of categories
+    const chartHeight = chartData.labels.length * 75; // 75px per category
+
     return (
-        <div className="w-1/2 h-1/2 mx-auto">
-            <Bar data={chartData} />
+        <div className="md:w-1/2 w-11/12 mx-auto overflow-x-auto" style={{ height: `${chartHeight}px` }}>
+            <Bar data={chartData} options={options} />
         </div>
     );
 }

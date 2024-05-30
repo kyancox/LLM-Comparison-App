@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 
 // Register the required components
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(ArcElement, Tooltip, Legend, Title);
 
 interface VoteData {
     model: string;
@@ -41,7 +41,6 @@ export default function PieChart() {
                 'claude': 'Claude (Anthropic)',
             }
 
-
             const voteData = {
                 labels: data.map(item => modelNames[item.model]),
                 datasets: [
@@ -68,10 +67,32 @@ export default function PieChart() {
         fetchData();
     }, []);
 
+    const options = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Vote Distribution by Model',
+                font: {
+                    size: 26,
+                },
+                color: 'black',
+            },
+            legend: {
+                position: 'top' as const,
+                labels: {
+                    font: {
+                        size: 16, 
+                    },
+                },
+            },
+        },
+    };
+
     return (
-        <div className='w-1/4 h-1/4 mx-auto mb-4'>
-            <Pie data={chartData} />
+        <div className='lg:w-1/4 md:w-1/2 mx-auto mb-4 flex justify-center items-center'>
+            <Pie data={chartData} options={options} />
         </div>
     );
-
 }
