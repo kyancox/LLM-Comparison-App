@@ -3,6 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
 import Navbar from '@/components/Navbar'
+import Footer from "@/components/Footer";
 
 const nunito_sans = Nunito_Sans({ subsets: ["latin"], display: 'swap', adjustFontFallback: false });
 
@@ -18,9 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunito_sans.className}>
-        <Navbar />
-        {children}
+      <body className={nunito_sans.className} >
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

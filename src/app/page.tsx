@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="lg:mb-7 mb-6">
       <About button={button}/>
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
@@ -85,6 +85,6 @@ export default function Home() {
 
 
       {vote && <Vote prompt={prompt} button={button} />}
-    </>
+    </div >
   );
 }
