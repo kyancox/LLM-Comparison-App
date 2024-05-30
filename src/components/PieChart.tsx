@@ -96,7 +96,7 @@ export default function PieChart() {
     };
 
     return (
-        <div className='lg:w-1/4 md:w-1/2 mx-auto mb-4 flex justify-center items-center'>
+        <div className='max-h-96 mx-auto mb-4 flex justify-center items-center'>
             <Pie data={chartData} options={options} />
         </div>
     );
