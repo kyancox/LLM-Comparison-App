@@ -4,15 +4,19 @@ import Link from "next/link"
 export default function Home() {
 
     return (
-        <div className="text-center mx-auto lg:w-7/12 w-10/12">
-            <h1 className="text-3xl font-semibold mb-4">About</h1>
-            <p>LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such as OpenAI's ChatGPT, Google's Gemini, and Anthropic's Claude. Users can input prompts, generate responses from various LLMs, and vote on their favorite responses. The app supports multiple versions of each model and includes visualizations of voting data using charts. To ensure fair usage, query limits are enforced for premium models, allowing up to three queries per day.</p>
-            <h1>Models: </h1>
-            <p>These models were selected because they are among the most popular and powerful currently available to the general public.</p>
-            <p>Premium models are bolded because they cost more.</p>
+        <div className="text-center mx-auto lg:w-5/12 w-10/12">
+            <h1 className="text-3xl font-semibold my-4">About</h1>
+            <p className="border rounded shadow p-4 bg-logoGrey">LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such 
+                as <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI's ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google's Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic's Claude</Link>
+                . Users can input prompts, generate responses from various LLMs, and vote on their favorite responses. The app supports multiple versions of each model and includes visualizations of voting data using charts. To ensure fair usage, query limits are enforced for premium models, allowing up to three queries per day.</p>
+            <h1 className="text-3xl font-semibold my-4">Models</h1>
+            <p className="border rounded shadow p-4 bg-logoGrey">
+                <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI's ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google's Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic's Claude</Link> were
+                selected for this project because they are among the most popular and powerful Large Language Models currently available to the general public. You can read about the capabilities of the models and their different versions below, with <span className="font-semibold">descriptions directly from their respective documentation</span>.
+            </p>
 
-            <div className="lg:w-3/4 mx-auto">
-                <Link href="https://platform.openai.com/docs/models" target="_blank" className="text-blue-900 hover:underline">Model Descriptions from OpenAI:</Link>
+            <div className=" mx-auto">
+                <Link href="https://platform.openai.com/docs/models" target="_blank" className="text-blue-900 hover:underline"><p className="text-2xl my-4">Model Descriptions from OpenAI:</p></Link>
                 <table className="table-fixed mx-auto mt-4 border-collapse border border-gray-300 w-full">
                     <thead>
                         <tr>
@@ -48,7 +52,7 @@ export default function Home() {
                     </tbody>
                 </table>
 
-                <Link href="https://ai.google.dev/gemini-api/docs/models/gemini" target="_blank" className="text-blue-900 hover:underline">Model Descriptions from Google:</Link>
+                <Link href="https://ai.google.dev/gemini-api/docs/models/gemini" target="_blank" className="text-blue-900 hover:underline"><p className="text-2xl my-4">Model Descriptions from Google:</p></Link>
                 <table className="table-fixed mx-auto mt-4 border-collapse border border-gray-300 w-full">
                     <thead>
                         <tr>
@@ -84,7 +88,7 @@ export default function Home() {
                     </tbody>
                 </table>
 
-                <Link href="https://docs.anthropic.com/en/docs/models-overview#model-comparison" target="_blank" className="text-blue-900 hover:underline">Model Descriptions from Anthropic:</Link>
+                <Link href="https://docs.anthropic.com/en/docs/models-overview#model-comparison" target="_blank" className="text-blue-900 hover:underline"><p className="text-2xl my-4">Model Descriptions from Anthropic:</p></Link>
                 <table className="table-fixed mx-auto mt-4 border-collapse border border-gray-300 w-full">
                     <thead>
                         <tr>
