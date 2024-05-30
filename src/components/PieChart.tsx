@@ -80,7 +80,7 @@ export default function PieChart() {
                 display: true,
                 text: 'Vote Distribution by Model',
                 font: {
-                    size: 26,
+                    size: 20,
                 },
                 color: 'black',
             },
