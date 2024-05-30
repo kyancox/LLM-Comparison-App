@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
   
-    const premiumModels = ['gpt-4', 'gpt-4-turbo', 'gpt-4o', 'gemini-1.5-flash', 'gemini-1.5.pro.latest', 'opus'];
+    const premiumModels = ['GPT-4o', 'GPT-4 Turbo', 'GPT-4', 'Gemini 1.5 Pro', 'Gemini 1.5 Flash', 'Claude 3 Opus'];
   
     // Count premium queries today 
     const queryCount = await collection.countDocuments({

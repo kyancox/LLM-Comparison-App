@@ -21,16 +21,16 @@ const checkQueryLimit = (handler: NextApiHandler) => async (req: NextApiRequest,
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const premimumModels = ['gpt-4', 'gpt-4-turbo', 'gpt-4o', 'gemini-1.5-flash', 'gemini-1.5.pro.latest', 'opus']
+  const premiumModels = ['GPT-4o', 'GPT-4 Turbo', 'GPT-4', 'Gemini 1.5 Pro', 'Gemini 1.5 Flash', 'Claude 3 Opus']
 
   // Count queries starting today
   const queryCount = await collection.countDocuments({
     sessionId,
-    model: { $in: premimumModels },
+    model: { $in: premiumModels },
     timestamp: { $gte: today }
   });
 
-  if (queryCount >= 3 && premimumModels.includes(req.body.model)) {
+  if (queryCount >= 3 && premiumModels.includes(req.body.model)) {
     return res.status(429).json({ message: 'Premium query limit reached for today.' });
   }
 

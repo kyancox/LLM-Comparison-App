@@ -11,7 +11,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return;
     }
 
-    const {prompt, model} = req.body;
+    const validModels = {
+        'GPT-3.5 Turbo': 'gpt-3.5-turbo',
+        'GPT-4': 'gpt-4',
+        'GPT-4 Turbo': 'gpt-4-turbo',
+        'GPT-4o': 'gpt-4o'
+    }
+
+    const { prompt, model } = req.body as { prompt: string, model: keyof typeof validModels };
 
     if (!prompt) {
         res.status(400).json({ error: 'Prompt is required.' });
@@ -23,8 +30,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             apiKey: process.env.OPENAI_API_KEY,
         });
 
-        const validModels = ['gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo', 'gpt-4o'];
-        const selectedModel = validModels.includes(model) ? model : 'gpt-3.5-turbo';
+        const selectedModel = model in validModels ? validModels[model] : 'gpt-3.5-turbo';
 
         const chatCompletion = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],

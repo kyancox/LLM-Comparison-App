@@ -11,7 +11,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return;
     }
 
-    const { prompt, model } = req.body;
+    const validModels = {
+        'Gemini 1.0 Pro': 'gemini-pro',
+        'Gemini 1.5 Flash': 'gemini-1.5-flash',
+        'Gemini 1.5 Pro': 'gemini-1.5-pro-latest'
+    }
+
+    const { prompt, model } = req.body as { prompt: string, model: keyof typeof validModels };
 
     if (!prompt) {
         res.status(400).json({ error: 'Prompt is required.' });
@@ -21,8 +27,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const genAI = new GoogleGenerativeAI(process.env.API_KEY as string);
 
-        const validModels = ['gemini-pro', 'gemini-1.5-flash', 'gemini-1.5-pro-latest'];
-        const selectedModel = validModels.includes(model) ? model : 'gemini-pro';
+        const selectedModel = model in validModels ? validModels[model] :  'gemini-pro';
         const geminiModel = genAI.getGenerativeModel({ model: selectedModel });
 
         const result = await geminiModel.generateContent(prompt);

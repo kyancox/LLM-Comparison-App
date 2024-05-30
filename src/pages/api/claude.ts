@@ -12,9 +12,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     const validModels = {
-        'haiku': 'claude-3-haiku-20240307',
-        'sonnet': 'claude-3-sonnet-20240229',
-        'opus': 'claude-3-opus-20240229',
+        'Claude 3 Haiku': 'claude-3-haiku-20240307',
+        'Claude 3 Sonnet': 'claude-3-sonnet-20240229',
+        'Claude 3 Opus': 'claude-3-opus-20240229',
     };
 
     const { prompt, model } = req.body as { prompt: string, model: keyof typeof validModels };
@@ -27,7 +27,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const anthropic = new Anthropic();
 
-        const selectedModel = model in validModels ? validModels[model] : validModels['haiku'];
+        const selectedModel = model in validModels ? validModels[model] : validModels['Claude 3 Haiku'];
 
         const response = await anthropic.messages.create({
             model: selectedModel,
