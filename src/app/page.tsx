@@ -33,7 +33,7 @@ export default function Home() {
       <PromptInput setPrompt={setPrompt} setButton={setButton}>
         <button
           id="generateButton"
-          className={`m-2 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 hover:bg-logoBlue text-white"}`}
+          className={`m-1 px-4 py-2 rounded transition ${button ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 hover:bg-logoBlue text-white"}`}
           type="button"
           onClick={() => setButton(true)}
           disabled={button}
@@ -42,7 +42,7 @@ export default function Home() {
         </button>
       </PromptInput>
 
-      <div className="mt-10 flex flex-col lg:flex-row justify-evenly items-start ">
+      <div className="flex flex-col lg:flex-row justify-evenly items-start ">
         <Model
           modelName="ChatGPT (OpenAI)"
           endpoint="gpt"

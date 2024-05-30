@@ -9,7 +9,7 @@ interface FormProps {
   apiEndpoint: string;
 }
 
-export default function oldForm({
+export default function GeneratedForm({
   prompt,
   setPrompt,
   selectedModel,

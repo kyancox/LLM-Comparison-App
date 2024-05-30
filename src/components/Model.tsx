@@ -60,7 +60,7 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
 
 
     return (
-        <div className="max-w-md mx-auto p-5 border rounded shadow min-w-[317px] min-h-[153px]">
+        <div className="lg:my-5 my-4 max-w-md mx-auto p-5 border rounded shadow min-w-[317px] min-h-[153px]">
             <div className="text-center mb-1 text-white rounded" style={{ backgroundColor: '#96d3fe' }}>
                 <a href={modelLink} className="inline-flex items-center space-x-2 hover:underline hover:text-blue-500">
                     <Image src={`/${endpoint}-trans.png`} width={25} height={25} alt={`${endpoint} logo`} />

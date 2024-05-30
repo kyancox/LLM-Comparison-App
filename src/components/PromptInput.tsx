@@ -34,22 +34,19 @@ export default function PromptInput({ setPrompt, children }: PromptProps) {
 
     return (
         <div className="flex flex-col justify-center items-center text-center">
-            <div className='mt-2'>
-                <h1 className='mb-4 font-bold text-2xl text-gray-800'>Enter your prompt below:</h1>
+                <h1 className='font-bold text-2xl text-gray-800'>Enter your prompt below:</h1>
                 <textarea
                     ref={textareaRef}
-                    className='border rounded shadow p-3 container w-full max-w-lg'
+                    className='my-3 border rounded shadow p-3 md:container md:w-full md:max-w-lg w-10/12'
                     placeholder="Please enter a prompt."
                     onKeyDown={handleKeyDown}
                     onChange={handleInput}
                     style={{ resize: 'none', overflow: 'hidden' }}
-                    cols={75}
                     rows={3}
                 ></textarea>
                 <div>
                     {children}
                 </div>
-            </div>
         </div>
     );
 }
