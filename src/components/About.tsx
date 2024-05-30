@@ -35,7 +35,7 @@ export default function About({button}: AboutProps) {
             </p>
 
             <p className="mt-1">
-                You have made <span className='font-bold'>{queryCount}/3 premium queries</span> today.
+                You have made <span className='font-bold'>{queryCount || 0}/3 premium queries</span> today.
             </p>
 
 
