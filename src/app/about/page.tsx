@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function Home() {
 
     return (
-        <div className="text-center mx-auto lg:w-5/12 w-10/12">
+        <div className="text-center mx-auto mb-8 lg:w-5/12 w-10/12">
             <h1 className="text-3xl font-semibold my-4">About</h1>
             <p className="border rounded shadow p-4 bg-logoGrey">LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such 
                 as <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI's ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google's Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic's Claude</Link>

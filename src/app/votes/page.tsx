@@ -4,7 +4,7 @@ import BarChart from '@/components/BarChart';
 export default function Home() {
    
     return (
-        <div>
+        <div className='mb-4'>
             <PieChart/>
             <BarChart/>
         </div>
