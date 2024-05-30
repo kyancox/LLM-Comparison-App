@@ -8,11 +8,14 @@ export default function Home() {
             <h1 className="text-3xl font-semibold my-4">About</h1>
             <p className="border rounded shadow p-4 bg-logoGrey">LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such 
                 as <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI's ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google's Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic's Claude</Link>
-                . Users can input prompts, generate responses from various LLMs, and vote on their favorite responses. The app supports multiple versions of each model and includes visualizations of voting data using charts. To ensure fair usage, query limits are enforced for premium models, allowing up to three queries per day.</p>
+                . Users can input prompts, generate responses from various LLMs, and vote on their favorite responses. The app supports multiple versions of each model and includes visualizations of voting data using charts. To ensure fair usage, query limits are enforced for premium models, allowing up to <span className="font-semibold">three queries per day.</span></p>
             <h1 className="text-3xl font-semibold my-4">Models</h1>
             <p className="border rounded shadow p-4 bg-logoGrey">
                 <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI's ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google's Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic's Claude</Link> were
                 selected for this project because they are among the most popular and powerful Large Language Models currently available to the general public. You can read about the capabilities of the models and their different versions below, with <span className="font-semibold">descriptions directly from their respective documentation</span>.
+                <br/>
+                <br/>
+                Models below with <span className="text-yellow-600">yellow text</span> are <span className="font-semibold">premium models</span>. These models are considered premium because querying them via APIs cost fairly more than other models, hence why users are only allowed to query premium models <span className="font-semibold">3 times a day</span>.
             </p>
 
             <div className=" mx-auto">
