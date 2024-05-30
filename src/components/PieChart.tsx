@@ -35,32 +35,39 @@ export default function PieChart() {
             const result = await response.json();
             const data: VoteData[] = result.votes;
 
-            const modelNames: { [key: string]: string } = {
-                'gpt': 'ChatGPT (OpenAI)',
-                'gemini': 'Gemini (Google)',
-                'claude': 'Claude (Anthropic)',
-            }
+            const models = ['gpt', 'gemini', 'claude'];
+
+            const modelData: { [key: string]: { name: string, backgroundColor: string, borderColor: string } } = {
+                'gpt': {
+                    'name': 'ChatGPT (OpenAI)',
+                    'backgroundColor': 'rgba(14,169,130,0.2)',
+                    'borderColor': 'rgba(14,169,130,255)'
+                },
+                'gemini': {
+                    'name': 'Gemini (Google)',
+                    'backgroundColor': 'rgba(54, 162, 235, 0.2)',
+                    'borderColor': 'rgba(54, 162, 235, 1)',
+                },
+                'claude': {
+                    'name': 'Claude (Anthropic)',
+                    'backgroundColor': 'rgba(210,156,118,0.2)',
+                    'borderColor': 'rgba(210,156,118,255)'
+                }
+            };
 
             const voteData = {
-                labels: data.map(item => modelNames[item.model]),
+                labels: data.map(item => modelData[item.model].name),
                 datasets: [
                     {
                         label: 'Votes',
                         data: data.map(item => item.votes),
-                        backgroundColor: [
-                            'rgba(5, 151, 242, 0.2)',
-                            'rgba(24, 49, 64, 0.2)',
-                            'rgba(5, 151, 242, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                        ],
+                        backgroundColor: data.map(item => modelData[item.model].backgroundColor),
+                        borderColor: data.map(item => modelData[item.model].borderColor),
                         borderWidth: 1,
                     },
                 ],
             };
+
             setChartData(voteData);
         };
 

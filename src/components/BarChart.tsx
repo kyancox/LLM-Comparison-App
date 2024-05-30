@@ -43,8 +43,8 @@ export default function BarChart() {
             const modelData: { [key: string]: { name: string, backgroundColor: string, borderColor: string } } = {
                 'gpt': {
                     'name': 'ChatGPT (OpenAI)',
-                    'backgroundColor': 'rgba(255, 99, 132, 0.2)',
-                    'borderColor': 'rgba(255, 99, 132, 1)'
+                    'backgroundColor': 'rgba(14,169,130,0.2)',
+                    'borderColor': 'rgba(14,169,130,255)'
                 },
                 'gemini': {
                     'name': 'Gemini (Google)',
@@ -53,8 +53,8 @@ export default function BarChart() {
                 },
                 'claude': {
                     'name': 'Claude (Anthropic)',
-                    'backgroundColor': 'rgba(255, 206, 86, 0.2)',
-                    'borderColor': 'rgba(255, 206, 86, 1)'
+                    'backgroundColor': 'rgba(210,156,118,0.2)',
+                    'borderColor': 'rgba(210,156,118,255)'
                 }
             }
 
