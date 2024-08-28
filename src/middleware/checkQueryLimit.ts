@@ -21,7 +21,7 @@ const checkQueryLimit = (handler: NextApiHandler) => async (req: NextApiRequest,
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const premiumModels = ['GPT-4o', 'GPT-4 Turbo', 'GPT-4', 'Gemini 1.5 Pro', 'Gemini 1.5 Flash', 'Claude 3 Opus']
+  const premiumModels = ['GPT-4o', 'GPT-4 Turbo', 'GPT-4', 'GPT-4o mini', 'Gemini 1.5 Pro', 'Gemini 1.5 Flash', 'Claude 3 Opus', 'Claude 3.5 Sonnet']
 
   // Count queries starting today
   const queryCount = await collection.countDocuments({

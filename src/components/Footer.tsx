@@ -15,7 +15,7 @@ export default function Footer() {
                     <MdiGithub className='mr-2' />
                     <p>GitHub</p>
                 </a>
-                <p>© {currentYear} LLM Comparison by <a href="https://linkedin.com/in/kyancox" target="_blank" className='underline'>Kyan Cox</a></p>
+                <p>© {currentYear} LLM Comparison by <a href="https://kyancox.com" target="_blank" className='underline'>Kyan Cox</a></p>
             </div>
         </footer>
     );

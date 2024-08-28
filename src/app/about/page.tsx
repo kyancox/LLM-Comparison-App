@@ -6,15 +6,15 @@ export default function Home() {
     return (
         <div className="text-center mx-auto mb-8 lg:w-5/12 w-10/12">
             <h1 className="text-3xl font-semibold my-4">About</h1>
-            <p className="border rounded shadow p-4 bg-logoGrey">LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such 
+            <p className="border rounded shadow p-4 bg-logoGrey">LLM Comparison is a web application that allows users to compare responses from leading Large Language Models (LLMs) such
                 as <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI&apos;s ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google&apos;s Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic&apos;s Claude</Link>
                 . Users can input prompts, generate responses from various LLMs, and vote on their favorite responses. The app supports multiple versions of each model and includes visualizations of voting data using charts. To ensure fair usage, query limits are enforced for premium models, allowing up to <span className="font-semibold">three queries per day.</span></p>
             <h1 className="text-3xl font-semibold my-4">Models</h1>
             <p className="border rounded shadow p-4 bg-logoGrey">
                 <Link href="https://openai.com/chatgpt/" className='text-blue-900 hover:underline' target="_blank">OpenAI&apos;s ChatGPT</Link>, <Link href="https://deepmind.google/technologies/gemini/" className='text-blue-900 hover:underline' target="_blank">Google&apos;s Gemini</Link>, and <Link href="https://www.anthropic.com/claude" className='text-blue-900 hover:underline' target="_blank">Anthropic&apos;s Claude</Link> were
                 selected for this project because they are among the most popular and powerful Large Language Models currently available to the general public. You can read about the capabilities of the models and their different versions below, with <span className="font-semibold">descriptions directly from their respective documentation</span>.
-                <br/>
-                <br/>
+                <br />
+                <br />
                 Models below with <span className="text-yellow-600">yellow text</span> are <span className="font-semibold">premium models</span>. These models are considered premium because querying them via APIs cost fairly more than other models, hence why users are only allowed to query premium models <span className="font-semibold">3 times a day</span>.
             </p>
 
@@ -28,6 +28,14 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td className="border border-gray-300 px-4 py-2 text-yellow-600">
+                                GPT-4o mini
+                            </td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                Affordable and intelligent small model for fast, lightweight tasks
+                            </td>
+                        </tr>
                         <tr>
                             <td className="border border-gray-300 px-4 py-2 text-yellow-600">
                                 GPT-4o
@@ -100,12 +108,20 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                            <td className="border border-gray-300 px-4 py-2 text-yellow-600">
+                                Claude 3.5 Sonnet
+                            </td>
+                            <td className="border border-gray-300 px-4 py-2">
+                            Most intelligent model, highest level of intelligence and capability
+                            </td>
+                        </tr>
                         <tr>
                             <td className="border border-gray-300 px-4 py-2 text-yellow-600">
                                 Claude 3 Opus
                             </td>
                             <td className="border border-gray-300 px-4 py-2">
-                                Most powerful model, delivering state-of-the-art performance on highly complex tasks and demonstrating fluency and human-like understanding
+                            Powerful model for highly complex tasks, top-level performance, intelligence, fluency, and understanding
                             </td>
                         </tr>
                         <tr>
@@ -113,7 +129,7 @@ export default function Home() {
                                 Claude 3 Sonnet
                             </td>
                             <td className="border border-gray-300 px-4 py-2">
-                                Most balanced model between intelligence and speed, a great choice for enterprise workloads and scaled AI deployments
+                            Balance of intelligence and speed, strong utility, balanced for scaled deployments
                             </td>
                         </tr>
                         <tr>
@@ -121,7 +137,7 @@ export default function Home() {
                                 Claude 3 Haiku
                             </td>
                             <td className="border border-gray-300 px-4 py-2">
-                                Fastest and most compact model, designed for near-instant responsiveness and seamless AI experiences that mimic human interactions
+                            Fastest and most compact model for near-instant responsiveness, quick and accurate targeted performance
                             </td>
                         </tr>
                     </tbody>

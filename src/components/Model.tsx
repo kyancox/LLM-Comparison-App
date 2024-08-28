@@ -24,9 +24,9 @@ export default function Model({ modelName, modelLink, endpoint, prompt, button, 
     const [error, setError] = useState('')
 
     const validVersions: { [key: string]: string[] } = {
-        'gpt': ['GPT-3.5 Turbo', 'GPT-4', 'GPT-4 Turbo', 'GPT-4o'],
+        'gpt': ['GPT-3.5 Turbo', 'GPT-4', 'GPT-4 Turbo', 'GPT-4o', 'GPT-4o mini'],
         'gemini': ['Gemini 1.0 Pro', 'Gemini 1.5 Flash', 'Gemini 1.5 Pro'],
-        'claude': ['Claude 3 Haiku', 'Claude 3 Sonnet', 'Claude 3 Opus']
+        'claude': ['Claude 3 Haiku', 'Claude 3 Sonnet', 'Claude 3 Opus', 'Claude 3.5 Sonnet']
     }
 
     const [version, setVerison] = useState<string>(validVersions[endpoint][0] as string);
