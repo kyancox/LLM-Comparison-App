@@ -7,7 +7,7 @@
 
 ![demo](https://raw.githubusercontent.com/kyancox/kyancox.com/main/public/llmdemo.png)
 
-## Tech Stack & UI Libraries
+## Tech Stack
 
 - [Next.js](https://www.nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
