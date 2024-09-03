@@ -1,8 +1,8 @@
 <h1 align="center">
-LLM Comparison App
+<a href="https://llmcomparison.kyancox.com" target="_blank">LLM Comparison App</a>
 </h1>
 <p align="center">
-  A <a href="https://llmcomparison.kyancox.com" target="_blank">web app</a> that allows users to compare responses from leading Large Language Models (LLMs) like <a href="https://openai.com/chatgpt/" target="_blank">ChatGPT</a>, <a href="https://deepmind.google/technologies/gemini/" target="_blank">Gemini</a>, and <a href="https://www.anthropic.com/claude" target="_blank">Claude</a>. Built with <a href="https://www.nextjs.org/" target="_blank">Next.js</a> and <a href="https://www.mongodb.com/" target="_blank">MongoDB</a> hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>.
+  A web app that allows users to compare responses from leading Large Language Models (LLMs) like <a href="https://openai.com/chatgpt/" target="_blank">ChatGPT</a>, <a href="https://deepmind.google/technologies/gemini/" target="_blank">Gemini</a>, and <a href="https://www.anthropic.com/claude" target="_blank">Claude</a>. Built with <a href="https://www.nextjs.org/" target="_blank">Next.js</a> and <a href="https://www.mongodb.com/" target="_blank">MongoDB</a> hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>.
 </p>
 
 ![demo](https://raw.githubusercontent.com/kyancox/kyancox.com/main/public/llmdemo.png)
